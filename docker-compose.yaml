@@ -2,7 +2,6 @@ version: "3.9"
 services:
     redis:
       container_name: redis
-      build: ./redis/.
       image: amirmarmor/seawise_redis
       privileged: true
       ports:
@@ -12,22 +11,11 @@ services:
       restart: always
     backend:
       container_name: backend
-      build:
-        context: ./backend
       image: amirmarmor/seawise_backend
       environment:
         - HOST=redis
       devices:
-        - /dev/video0:/dev/video0
-        - /dev/video1:/dev/video1
-        - /dev/video2:/dev/video2
-        - /dev/video3:/dev/video3
-        - /dev/video4:/dev/video4
-        - /dev/video5:/dev/video5
-        - /dev/video6:/dev/video6
-        - /dev/video7:/dev/video7
-        - /dev/video8:/dev/video8
-        - /dev/video9:/dev/video9
+        - /dev:/dev
       volumes:
         - /videos:/app/videos
       ports:
