@@ -14,6 +14,7 @@ services:
       image: amirmarmor/seawise_backend
       environment:
         - HOST=redis
+      privileged: true
       devices:
         - /dev:/dev
       volumes:
